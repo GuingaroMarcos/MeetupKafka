@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Meetup.Kafka.Web
 {
@@ -62,7 +63,7 @@ namespace Meetup.Kafka.Web
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
-
+                spa.Options.StartupTimeout = new TimeSpan(0, 5, 0);
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
