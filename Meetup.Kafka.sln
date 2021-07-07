@@ -5,7 +5,19 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentacion", "Presentacion", "{CBE696B0-D27C-451A-80A1-2C760202CD97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meetup.Kafka.Web", "Meetup.Kafka.Web\Meetup.Kafka.Web.csproj", "{7093219F-CC31-40D9-BD9C-DE418122E0D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meetup.Kafka.Web", "Meetup.Kafka.Web\Meetup.Kafka.Web.csproj", "{7093219F-CC31-40D9-BD9C-DE418122E0D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{689FACD5-2673-4772-B95A-425316DCF038}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meetup.Kafka.Domain", "Meetup.Kafka.Domain\Meetup.Kafka.Domain.csproj", "{F42DA8B8-D87B-43F9-88B2-5FDDACE21EAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{DEF146A0-4FFB-497F-8498-CB629EF016DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meetup.Kafka.Application", "Meetup.Kafka.Application\Meetup.Kafka.Application.csproj", "{3739EBEB-A1E8-438E-824C-464C8B92B4C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{F47CB6DC-CC36-4A6E-93D6-B120BF07E3AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meetup.Kafka.Infra", "Meetup.Kafka.Infra\Meetup.Kafka.Infra.csproj", "{83C8A5B8-C977-4B93-A0A6-8FDAEDA86784}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +29,27 @@ Global
 		{7093219F-CC31-40D9-BD9C-DE418122E0D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7093219F-CC31-40D9-BD9C-DE418122E0D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7093219F-CC31-40D9-BD9C-DE418122E0D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F42DA8B8-D87B-43F9-88B2-5FDDACE21EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F42DA8B8-D87B-43F9-88B2-5FDDACE21EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F42DA8B8-D87B-43F9-88B2-5FDDACE21EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F42DA8B8-D87B-43F9-88B2-5FDDACE21EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3739EBEB-A1E8-438E-824C-464C8B92B4C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3739EBEB-A1E8-438E-824C-464C8B92B4C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3739EBEB-A1E8-438E-824C-464C8B92B4C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3739EBEB-A1E8-438E-824C-464C8B92B4C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83C8A5B8-C977-4B93-A0A6-8FDAEDA86784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C8A5B8-C977-4B93-A0A6-8FDAEDA86784}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C8A5B8-C977-4B93-A0A6-8FDAEDA86784}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C8A5B8-C977-4B93-A0A6-8FDAEDA86784}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7093219F-CC31-40D9-BD9C-DE418122E0D3} = {CBE696B0-D27C-451A-80A1-2C760202CD97}
+		{F42DA8B8-D87B-43F9-88B2-5FDDACE21EAD} = {689FACD5-2673-4772-B95A-425316DCF038}
+		{3739EBEB-A1E8-438E-824C-464C8B92B4C4} = {DEF146A0-4FFB-497F-8498-CB629EF016DD}
+		{83C8A5B8-C977-4B93-A0A6-8FDAEDA86784} = {F47CB6DC-CC36-4A6E-93D6-B120BF07E3AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2CB4C46-7506-47BB-866E-F18A9D5FB3C3}

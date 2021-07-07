@@ -10,12 +10,18 @@ const routes: Routes =[
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  }, {
+  },
+  {
+    path: '',
+    redirectTo: 'product',
+    pathMatch: 'full',
+  },
+  {
     path: '',
     component: LayoutComponent,
     children: [{
       path: '',
-      loadChildren: './layouts/layout/layout.module#LayoutModule'
+      loadChildren: () => import('./layouts/layout/layout.module').then(m => m.LayoutModule)
     }]
   }
 ];
