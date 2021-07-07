@@ -10,6 +10,7 @@ namespace Meetup.Kafka.Web.Integration
         {
 
         }
-        public override string Topics => "invoice.status.update";
+
+        public override string Topic => "invoice.status.update";
     }
 }

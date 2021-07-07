@@ -71,6 +71,7 @@ namespace Meetup.Kafka.Web
                     pattern: "{controller}/{action=Index}/{id?}");
 
                 endpoints.MapHub<NotificationHub>("/notificationHub");
+                endpoints.MapHub<DashHub>("/dashHub");
             });
 
             app.UseSpa(spa =>

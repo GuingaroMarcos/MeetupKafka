@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Inject, Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
+import { mapTo } from "rxjs/operators";
 import { Product } from "../../models/product";
 
 
@@ -22,15 +23,22 @@ export class ProductService {
     });
   }
 
+  host: string = "http://localhost/MeetupKafka";
 
-  getList$: Observable<any> = this.http.get<any>('/api/Product/GetList');
+  getList$: Observable<any> = this.http.get<any>(this.host + '/api/Product/GetList');
 
   public getList(): Observable<Product[]>{
     return this.http.get<Product[]>('/api/Product/GetList');
   }
 
   public newOrderProduct(product: Product): Observable<Product> {
-    return this.http.post<any>('/api/Product/NewOrder', JSON.stringify(product), { headers: this.headers });
+    const formData = new FormData();
+    for (const prop in product) {
+      if (!product.hasOwnProperty(prop)) { continue; }
+      formData.append(prop, product[prop]);
+    }
+
+    return this.http.post<Product>('/api/Product/NewOrder', formData).pipe();
   }
 
 }

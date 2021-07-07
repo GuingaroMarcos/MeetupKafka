@@ -43,5 +43,34 @@ namespace Meetup.Kafka.Infra.Messaging.Consumer
             consumer.Subscribe(topics);
             return consumer;
         }
+
+        public List<TopicPartitionOffset> BuildCommit()
+        {
+            if (configs == null || !configs.Any())
+                throw new ArgumentException($"Configartion can not be null or empty");
+
+
+            var consumer = new ConsumerBuilder<Ignore, string>(configs)
+                .SetErrorHandler((_, e) => Console.WriteLine($"Error: {e.Reason}"))
+                .SetStatisticsHandler((_, json) => Console.WriteLine($"Statistics: {json}"))
+                .Build();
+
+            return consumer.Commit();
+        }
+
+        public IConsumer<Ignore, string> Build(string[] topics)
+        {
+            if (configs == null || !configs.Any())
+                throw new ArgumentException($"Configartion can not be null or empty");
+
+
+            var consumer = new ConsumerBuilder<Ignore, string>(configs)
+                .SetErrorHandler((_, e) => Console.WriteLine($"Error: {e.Reason}"))
+                .SetStatisticsHandler((_, json) => Console.WriteLine($"Statistics: {json}"))
+                .Build();
+
+            consumer.Subscribe(topics);
+            return consumer;
+        }
     }
 }

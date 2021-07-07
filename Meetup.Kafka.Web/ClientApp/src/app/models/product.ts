@@ -3,7 +3,7 @@ export class Product
   name: string;
   value: number;
   description: string;
-  photoBase64: string;
+  photoForm: Blob;
   category: string;
   //features: string[];
 }

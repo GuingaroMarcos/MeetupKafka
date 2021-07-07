@@ -58,8 +58,8 @@ export class NavbarComponent implements OnInit {
       .then(() => {
         this.hubConnection.on('ReadNotification', (value) => {
           this.notification = Object.assign({}, this.notification, JSON.parse(value.message.value));
-          console.log(JSON.parse(value.message.value));
-          console.log(this.notification);
+          console.log(value);
+
           this.Noficicacoes.push({ name: this.notification.Name, status: this.notification.Status });
           this.numeroNotificacoes = this.numeroNotificacoes + 1;
         });

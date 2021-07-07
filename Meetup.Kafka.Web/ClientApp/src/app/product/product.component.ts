@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { ProductService } from '../services/product/product.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 interface Category {
   viewValue: string;
 }
@@ -16,21 +16,22 @@ interface Category {
 })
 export class ProductComponent implements OnInit {
   public product: Product;
-  public products: Product[];
+  public products: any;
   getList$: Observable<any>;
   formProduct: FormGroup;
-  base64String: string;
-  constructor(private productService: ProductService, private fb: FormBuilder) { }
+  constructor(private productService: ProductService, private fb: FormBuilder, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.formProduct = this.fb.group({
       name: [''],
       value: [''],
       description: [''],
-      photoBase64: [''],
+      photoFile: [''],
+      photoForm: [''],
       category: [''],
     });
-    this.productService.getList().subscribe(even => {  }, error => { console.log(error) });
+
+    //this.productService.getList().subscribe(even => { this.products = even }, error => { console.log(error) });
   }
 
   Categories: Category[] = [
@@ -39,22 +40,19 @@ export class ProductComponent implements OnInit {
   ];
 
   onChange(event) {
-    let file = event.target.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      this.base64String = reader.result as string;
-    }
-    setTimeout(() => {
-      this.formProduct.patchValue({ photo: this.base64String });
-      this.formProduct.updateValueAndValidity();
-    }, 10)
+    this.formProduct.patchValue({ photoForm: event.target.files[0] });
+    this.formProduct.updateValueAndValidity();
   }
 
   public newOrderProduct() {
     this.product = Object.assign({}, this.product, this.formProduct.value);
-    this.product.photoBase64 = this.base64String;
-    this.productService.newOrderProduct(this.product).subscribe(even => { }, error => { console.log(error) });
-  }
 
+    this.productService.newOrderProduct(this.product).subscribe(even => {
+      this.formProduct.reset();
+      this.openSnackBar('Order dispatched', 'Undo');
+    }, error => { console.log(error) });
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
 }

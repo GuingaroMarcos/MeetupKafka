@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import * as signalR from "@aspnet/signalr"; 
 
 @Component({
   selector: 'app-dashboard',
@@ -67,6 +68,7 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
+    this.startConnection();
     const dataDailySalesChart: any = {
       labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
       series: [
@@ -136,4 +138,20 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  private hubConnection: signalR.HubConnection
+  public startConnection = () => {
+
+    this.hubConnection = new signalR.HubConnectionBuilder()
+      .withUrl('/dashHub')
+      .build();
+
+    this.hubConnection
+      .start()
+      .then(() => {
+        this.hubConnection.on('ReadDash', (value) => {
+          console.log(value);
+        });
+      })
+      .catch(err => console.log('Error while starting connection: ' + err))
+  }
 }

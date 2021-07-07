@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ProductService } from './services/product/product.service';
 import { NotificationService } from './services/Notification/notification.service';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -41,6 +42,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatTooltipModule,
     //NgxMatFileInputModule,
     MaterialFileInputModule,
+    MatSnackBarModule,
   ],
   declarations: [
     AppComponent,

@@ -18,23 +18,8 @@ namespace Meetup.Kafka.Web.Controllers
 
         }
 
-        [HttpGet("GetList")]
-        public async Task<IActionResult> GetList()
-        {
-            try
-            {
-
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest();
-            }
-        }
-
-
         [HttpPost("NewOrder")]
-        public async Task<IActionResult> NewOrder([FromServices] IMediator mediator,[FromBody] ProductRequest productRequest, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> NewOrder([FromServices] IMediator mediator,[FromForm] ProductRequest productRequest, CancellationToken cancellationToken = default)
         {
             try
             {
